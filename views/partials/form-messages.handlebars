@@ -1,0 +1,19 @@
+{{! form activies partials }}
+{{#if success_message}}
+  <div class="alert alert-success">
+    {{success_message}}
+  </div>
+{{/if}}
+
+{{#if error_message}}
+  <div class="alert alert-danger">
+    {{error_message}}
+  </div>
+{{/if}}
+
+{{! passport error flash message }}
+{{#if error}}
+  <div class="alert alert-danger">
+    {{error}}
+  </div>
+{{/if}}

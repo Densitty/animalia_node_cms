@@ -1,0 +1,157 @@
+<!-- Page Content -->
+<div class="container">
+
+  <div class="row">
+
+    <!-- Post Content Column -->
+    <div class="col-lg-8">
+
+      <!-- Title -->
+      <h1 class="mt-4">{{post.title}}</h1>
+
+      <!-- Author -->
+      <p class="lead">
+        by
+        <a href="#">{{post.user.firstName}}</a>
+      </p>
+
+      <hr />
+
+      <!-- Date/Time -->
+      <p>Published on {{generateTime post.date "Do MMM, YYYY"}}</p>
+
+      <hr />
+
+      <!-- Preview Image -->
+      <img
+        class="img-fluid rounded post__image"
+        src="/uploads/{{post.image}}"
+        alt=""
+      />
+
+      <hr />
+
+      <!-- Post Content -->
+      <p class="lead">
+        {{post.body}}
+      </p>
+
+      <hr />
+
+      {{#if post.allowComments}}
+      <!-- Comments Form -->
+      <div class="card my-4">
+        <h5 class="card-header">Leave a Comment:</h5>
+        <div class="card-body">
+          <form action="/comments/{{post.id}}" method="post">
+            <div class="form-group">
+              <textarea name="body" class="form-control" rows="3"></textarea>
+              <input type="hidden" name="id" value="{{post.id}}">
+            </div>
+            <div class="form-group">
+              <input type="text"  name="nickname" placeholder="Your name...">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+      {{else}}
+      <h3>Comments not allowed on this post</h3>
+      <hr />
+      {{/if}} 
+      
+      <!-- Single Comment -->
+      {{#each post.comments}}
+      <div class="media mb-4">
+        <img
+          class="d-flex mr-3 rounded-circle"
+          src="http://placehold.it/50x50"
+          alt=""
+        />
+        <div class="media-body">
+          {{#if user}}
+          <h5 class="mt-0">
+            <a href="/admin/comment">{{user.firstName}}</a>
+          </h5>
+          {{else}}
+          <h5 class="mt-0">{{nickname}}</h5>
+          {{/if}}
+          {{body}}
+        </div>
+      </div>
+      
+      {{/each}}
+
+    </div>
+
+    <!-- Sidebar Widgets Column -->
+    {{> home/sidebar}}
+    {{!-- <div class="col-md-4">
+
+      <!-- Search Widget -->
+      <div class="card my-4">
+        <h5 class="card-header">Search</h5>
+        <div class="card-body">
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search for..."
+            />
+            <span class="input-group-btn">
+              <button class="btn btn-secondary" type="button">Go!</button>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Categories Widget -->
+      <div class="card my-4">
+        <h5 class="card-header">Categories</h5>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-6">
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <a href="#">Web Design</a>
+                </li>
+                <li>
+                  <a href="#">HTML</a>
+                </li>
+                <li>
+                  <a href="#">Freebies</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-lg-6">
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <a href="#">JavaScript</a>
+                </li>
+                <li>
+                  <a href="#">CSS</a>
+                </li>
+                <li>
+                  <a href="#">Tutorials</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Side Widget -->
+      <div class="card my-4">
+        <h5 class="card-header">Side Widget</h5>
+        <div class="card-body">
+          You can put anything you want inside of these side widgets. They are
+          easy to use, and feature the new Bootstrap 4 card containers!
+        </div>
+      </div>
+
+    </div> --}}
+
+  </div>
+  <!-- /.row -->
+
+</div>

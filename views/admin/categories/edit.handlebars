@@ -1,0 +1,18 @@
+<h1>Edit Category</h1>
+<form
+  action="/admin/categories/edit/{{category._id}}?_method=PATCH"
+  method="post"
+>
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input
+      type="text"
+      id="name"
+      class="form-control"
+      name="name"
+      placeholder="Category Name"
+      value="{{category.name}}"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary">Edit</button>
+</form>

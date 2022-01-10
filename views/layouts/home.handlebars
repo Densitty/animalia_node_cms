@@ -1,0 +1,68 @@
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Home | {{title}}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Custom styles for all posts -->
+    <link href="/css/blog-home.css" rel="stylesheet" />
+    <!-- Custom styles for single post -->
+    <link href="/css/blog-post.css" rel="stylesheet" />
+
+  </head>
+
+  <body>
+
+    <!-- Navigation Partials -->
+    {{> home/home-nav }}
+    <!-- Navigation -->
+    
+
+    <!-- Page Content -->
+    <div class="container">
+      <div class="pt-5">
+        {{!-- display error flash messages --}}
+        {{#if errors}}
+          {{#each errors}}
+            <div class="alert alert-danger">
+              {{message}}
+            </div>
+          {{/each}}
+        {{/if}}
+        {{!-- flash messages --}}
+
+        {{!-- display success flash messages --}}
+        {{> form-messages}}
+        {{!-- display success flash messages --}}
+      </div>
+
+
+      {{{body}}}
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer Partials -->
+    {{> home/footer}}
+    <!-- Footer -->
+    
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>
