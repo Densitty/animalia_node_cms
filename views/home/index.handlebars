@@ -6,23 +6,25 @@
     <!-- Blog Post -->
     {{#if posts}}
       {{#each posts}}
-        <div class="card mb-4 post__card">
-          <img
-            class="card-img-top post__thmb"
-            src="./uploads/{{image}}"
-            alt="{{title}}"
-          />
-          <div class="card-body">
-            <h2 class="card-title">{{title}}</h2>
-            <p class="card-text">{{#frontpagePostSlicer body}}{{/frontpagePostSlicer}}</p>
-            <a href="/post/{{slug}}" class="btn btn-primary">Read More &rarr;</a>
+        {{#displayPublicPost status "public"}}
+          <div class="card mb-4 post__card">
+            <img
+              class="card-img-top post__thmb"
+              src="./uploads/{{image}}"
+              alt="{{title}}"
+            />
+            <div class="card-body">
+              <h2 class="card-title">{{title}}</h2>
+              <p class="card-text">{{#frontpagePostSlicer body}}{{/frontpagePostSlicer}}</p>
+              <a href="/post/{{slug}}" class="btn btn-primary">Read More &rarr;</a>
+            </div>
+            <div class="card-footer text-muted">
+              {{generateTime date "Do MMM, YYYY"}}
+              by
+              <a href="#">{{user.firstName}}</a>
+            </div>
           </div>
-          <div class="card-footer text-muted">
-            {{generateTime date "Do MMM, YYYY"}}
-            by
-            <a href="#">{{user.firstName}}</a>
-          </div>
-        </div>
+        {{/displayPublicPost}}
       {{/each}}
       
 

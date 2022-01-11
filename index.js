@@ -23,6 +23,7 @@ const {
   generateTime,
   paginate,
   frontpagePostSlicer,
+  displayPublicPost,
 } = require("./utilities/handlebar_helpers");
 
 /* Config Variables and Port */
@@ -74,6 +75,7 @@ app.engine(
       generateTime,
       paginate,
       frontpagePostSlicer,
+      displayPublicPost,
     },
     handlebars: allowInsecurePrototypeAccess(Handlebars),
   })

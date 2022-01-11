@@ -71,6 +71,13 @@ const Helpers = {
   frontpagePostSlicer: function (options) {
     return options.slice(0, 200) + "...";
   },
+
+  displayPublicPost: function (a, b, options) {
+    if (a === b) {
+      return options.fn(this);
+    }
+    // return options.inverse(this);
+  },
 };
 
 module.exports = Helpers;
