@@ -20,4 +20,25 @@
     <link href="/css/sb-admin.css" rel="stylesheet" />
     <link href="/css/bootstrap-switch.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" crossorigin="anonymous"/>
+
+    <script src="https://cdn.tiny.cloud/1/p32riajdctlx2mals105ibhvittwtlwv57rx08q836it3p20/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+
+    
+    <script>
+      tinymce.init({
+          selector: '#text',
+          height: 500,
+          menubar: false,
+          plugins: [
+            'advlist autolink lists link image charmap print preview anchor',
+            'searchreplace visualblocks code fullscreen',
+            'insertdatetime media table paste code help wordcount'
+          ],
+          toolbar: 'undo redo | formatselect | ' +
+          'bold italic backcolor | alignleft aligncenter ' +
+          'alignright alignjustify | bullist numlist outdent indent | ' +
+          'removeformat ' + '| link | help',
+          content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+        });
   </head>

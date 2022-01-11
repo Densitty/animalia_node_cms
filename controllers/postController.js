@@ -163,7 +163,6 @@ exports.editPost = async (req, res) => {
 };
 
 exports.publishEditedPost = async (req, res) => {
-  console.log(req.body);
   const { title, status, body, allowComments, category } = req.body;
   try {
     const id = req.params.id;
