@@ -165,7 +165,25 @@ exports.editPost = async (req, res) => {
 exports.publishEditedPost = async (req, res) => {
   const { title, status, body, allowComments, category } = req.body;
   try {
+    let file, filename;
     const id = req.params.id;
+
+    if (req.files) {
+      file = req.files.file;
+      const imageSelected = isEmpty(file);
+      const requiredFile = isImage(file);
+      const imageIsOfRequiredSize = imageUploadable(file);
+
+      /* "./public/uploads/image001.jpg" */
+      filename = `${Date.now()}_${file.name}`;
+
+      if (imageSelected && requiredFile && imageIsOfRequiredSize) {
+        file.mv("./public/uploads/" + filename, (err) => {
+          if (err) throw err;
+        });
+      }
+    }
+
     const post = await Post.findByIdAndUpdate(
       { _id: id },
       {
@@ -174,6 +192,7 @@ exports.publishEditedPost = async (req, res) => {
         body,
         allowComments: allowComments ? true : false,
         user: req.user.id,
+        image: filename,
         category,
       },
       { new: true, runValidators: true }
