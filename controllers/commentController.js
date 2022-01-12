@@ -58,7 +58,7 @@ exports.adminPostComment = async (req, res) => {
       "success_message",
       "Thank for commenting. Your comment is awaiting approval."
     );
-    res.redirect(`/post/${post.id}`);
+    res.redirect(`/post/${post.slug}`);
   } catch (err) {
     console.log(err);
   }
