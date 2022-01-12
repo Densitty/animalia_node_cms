@@ -41,8 +41,7 @@ exports.guestComment = async (req, res) => {
 exports.adminPostComment = async (req, res) => {
   try {
     // find the post on which the comment is made
-    const post = await Post.findById({ _id: req.body.id });
-    console.log(req.params);
+    const post = await Post.findOne({ _id: req.body.id });
     // create the comment
     const newComment = await new Comment({
       user: req.user.id || req.body.nickname /* the logged-in user's id */,
