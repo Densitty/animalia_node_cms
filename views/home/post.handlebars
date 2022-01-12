@@ -39,25 +39,40 @@
       <hr />
 
       {{#if post.allowComments}}
-      <!-- Comments Form -->
-      <div class="card my-4">
-        <h5 class="card-header">Leave a Comment:</h5>
-        <div class="card-body">
-          <form action="/comments/{{post.id}}" method="post">
-            <div class="form-group">
-              <textarea name="body" class="form-control" rows="3"></textarea>
-              <input type="hidden" name="id" value="{{post.id}}">
+        <!-- Comments Form -->
+          <div class="card my-4">
+            <h5 class="card-header">Leave a Comment:</h5>
+            <div class="card-body">
+              {{#if user}}
+                <form action="/admin/comments/admin-comment/{{post.id}}" method="post">
+              
+                <div class="form-group">
+                  <textarea name="body" class="form-control" rows="3"></textarea>
+                  <input type="hidden" name="id" value="{{post.id}}">
+                </div>
+                <div class="form-group">
+                  <input type="text"  name="nickname" placeholder="Your name...">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+              {{else}}
+                <form action="/comments/{{post.id}}" method="post">
+              
+                <div class="form-group">
+                  <textarea name="body" class="form-control" rows="3"></textarea>
+                  <input type="hidden" name="id" value="{{post.id}}">
+                </div>
+                <div class="form-group">
+                  <input type="text"  name="nickname" placeholder="Your name...">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+              {{/if}}
             </div>
-            <div class="form-group">
-              <input type="text"  name="nickname" placeholder="Your name...">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-        </div>
-      </div>
-      {{else}}
-      <h3>Comments not allowed on this post</h3>
-      <hr />
+          </div>
+        {{else}}
+        <h3>Comments not allowed on this post</h3>
+        <hr />
       {{/if}} 
       
       <!-- Single Comment -->

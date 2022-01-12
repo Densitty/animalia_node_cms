@@ -13,7 +13,7 @@ const {
 
 router.get("/", getComments);
 
-router.post("/:id", adminPostComment);
+router.post("/admin-comment/:id", adminPostComment);
 
 router.delete("/:id", deleteComment);
 
